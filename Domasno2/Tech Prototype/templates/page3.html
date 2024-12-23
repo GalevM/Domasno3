@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Предвидување</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+<!-- Navigation Menu -->
+<nav class="navbar">
+    <div class="logo">📈 Берза</div>
+    <ul class="menu">
+        <li><a href="/">Почетна</a></li>
+        <li><a href="page2">Историја на берза</a></li>
+        <li><a href="page3">Предвидување на берза</a></li>
+    </ul>
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+    <!-- Form Section -->
+    <div class="form-box">
+        <h1>Изберете компанија</h1>
+        <form id="prediction-form">
+            <!-- Select Company -->
+            <label for="issuer">Издавач:</label>
+            <select name="issuer" id="issuer">
+                {% for issuer in issuers %}
+                <option value="{{ issuer }}">{{ issuer }}</option>
+                {% endfor %}
+             </select>
+
+            <!-- Date Range -->
+            <label for="start-date">Датум од:</label>
+            <input type="date" id="start-date" name="start-date" required>
+
+            <label for="end-date">Датум до:</label>
+            <input type="date" id="end-date" name="end-date" required>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Генерирај Прогноза</button>
+        </form>
+    </div>
+
+    <!-- Prediction Results Section -->
+    <div class="result-box">
+        <h2>Резултати од предвидувањето</h2>
+        <p id="prediction-results">Нема податоци за прикажување. Внесете валидни информации за компанија и временски период.</p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Берза | <a href="#">Политика за приватност</a> | <a href="#">Услови за користење</a></p>
+</footer>
+</body>
+<script src="../static/script.js"></script>
+</html>

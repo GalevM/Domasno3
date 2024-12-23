@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Избор на издавач и временска рамка</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="../static/script.js"></script>
+
+  <style>
+    #predictionChart {
+      width: 50% !important;
+      height: 300px !important;
+    }
+  </style>
+  <link rel="stylesheet" href="../static/page2.css">
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+<body>
+<nav class="navbar">
+    <div class="logo">📈 Берза</div>
+    <ul class="menu">
+        <li><a href="/">Почетна</a></li>
+        <li><a href="page2">Историја на берза</a></li>
+        <li><a href="page3">Предвидување на берза</a></li>
+    </ul>
+</nav>
+
+
+
+<div class="content">
+    <h1>Изберете Издавач и Времетраење</h1>
+    <form id="selectionForm" method="POST">
+      <label for="issuer">Издавач:</label>
+      <select name="issuer" id="issuer">
+        {% for issuer in issuers %}
+          <option value="{{ issuer }}">{{ issuer }}</option>
+        {% endfor %}
+      </select>
+        <br><br>
+        <br><br>
+      <button type="submit">Погледни предвидување</button>
+
+        {% if graph %}
+        <h2 class="text-center" style="margin-left: 285px;">Графикон за {{ selected_issuer }}</h2>
+        <div class="text-center">
+            <img style="width: 820px" src="data:image/png;base64,{{ graph }}" alt="Stock Price Graph">
+        </div>
+    {% else %}
+        <p class="text-center text-muted">Нема достапен графикон.</p>
+    {% endif %}
+
+    </form>
+    <div id="chart-container" style="display: none;">
+        <h2>Предвидување на идните трендови за берзата</h2>
+        <canvas id="predictionChart"></canvas>
+    </div>
+</div>
+
+<footer style="margin-top: 120px">
+    <p>&copy; 2024 Берза | <a href="#">Политика за приватност</a> | <a href="#">Услови за користење</a></p>
+</footer>
+
+</body>
+</html>
